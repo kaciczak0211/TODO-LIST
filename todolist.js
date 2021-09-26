@@ -3,16 +3,29 @@ const todoInput = document.querySelector(".todo-input");
 const todoButton = document.querySelector(".todo-button");
 const todoList = document.querySelector(".todo-list");
 const filterOption = document.querySelector(".filter-todo");
+const newTodo = document.querySelector(".new-todo");
+//const todoitems = document.querySelector("body > div");
 //Event Listeners
 todoButton.addEventListener('click', addTodo);
 todoList.addEventListener('click', deleteCheck);
 filterOption.addEventListener('click', filterTodo);
 
+//todoitems = addEventListener('click', getUnique);
+// ARRAYS
+const array = [  ];
+
+
+
+
 
 //Functions
 function addTodo(event) {
+    
     //Prevent form from submitting
     event.preventDefault();
+    //Includes itemm
+ 
+   
     //Todo DIV
     const todoDiv = document.createElement("div");
     todoDiv.classList.add("todo");
@@ -34,22 +47,41 @@ function addTodo(event) {
     //APPEND TO LIST
     todoList.appendChild(todoDiv);
     //CLEAT TODO INPUT VALUE 
+
+    //NEW ARRAY
+   // const currentTodoItems = new Array();
+    //const currentTodoItems = [todoInput.value];
+    //currentTodoItems.push(todoInput.value);
+    console.log(array.includes(todoInput.value));
+    if(array.includes(todoInput.value) === true)
+        alert("THIS VALUE EXIST") &&
+        
+    
+  
+    //console.log(currentTodoItems);
+    array.push(todoInput.value);
+    console.log(array);
     todoInput.value = "";
+    
+    
+
 }
 
 function deleteCheck(e){
     const item = e.target;
     // Delete TODO
-    if (item.classList[0] === "trash-btn") {
+    if (item.classList[0] === "trash-btn" ) 
+     {
          const todo = item.parentElement;
          //Animation
          todo.classList.add("fall");
          todo.addEventListener('transitionend', function(){
              todo.remove();
-
          });
-        
-    }
+      
+}
+  
+
     //CHECK MARK
     if (item.classList[0] === "complete-btn"){
         const todo = item.parentElement;
@@ -84,9 +116,3 @@ function filterTodo(e){
     });
 
 }
-
-
-
-
-
-
